@@ -54,7 +54,49 @@
                 <td>Culture, architecture, beer</td>
                 <td>7 days</td>
             </tr>
-          </table>
+        </table>
+        <br>
+        <h2>Code display</h2>
+        <a href="https://css-tricks.com/snippets/sass/placing-items-circle/">Source</a>
+        <pre>
+            @mixin on-circle($item-count, $circle-size, $item-size) {
+                position: relative;
+                width:  $circle-size;
+                height: $circle-size;
+                padding: 0;
+                border-radius: 50%; 
+                list-style: none;       
+                
+                > * {
+                  display: block;
+                  position: absolute;
+                  top:  50%; 
+                  left: 50%;
+                  width:  $item-size;
+                  height: $item-size;
+                  margin: -($item-size / 2);
+                
+                  $angle: (360 / $item-count);
+                  $rot: 0;
+              
+                  @for $i from 1 through $item-count {
+                    &:nth-of-type(#{$i}) {
+                      transform: 
+                        rotate($rot * 1deg) 
+                        translate($circle-size / 2) 
+                        rotate($rot * -1deg);
+                    }
+              
+                    $rot: $rot + $angle;
+                  }
+                }
+              }
+        </pre>
+        <blockquote cite="https://stackoverflow.com/questions/12813573/position-icons-into-circle">
+             How can I position several &lt;img&gt; elements into a circle around another and have those elements all be clickable links as well? I want it to look like the picture below, but I have no idea how to achieve that effect.
+        </blockquote>
+        <a href="https://stackoverflow.com/questions/12813573/position-icons-into-circle">Stack Overflow</a>
+
 
 
         
